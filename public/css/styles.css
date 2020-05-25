@@ -1,3 +1,8 @@
+:root {
+    --background-color: #fff;
+    --accent-color: #1abc9c;
+}
+
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
@@ -12,7 +17,7 @@
     letter-spacing: 5px;
 }
 .navbar-nav  li a:hover {
-    color: #1abc9c !important;
+    color: var(--accent-color) !important;
 }
 
 .footer-padding {
@@ -20,16 +25,59 @@
 }
 
 .footer {
-	position: absolute;
-	text-align: center;
-	bottom: 0;
+	position: relative;
+    text-align: center;
+    top: 21vh;
+	bottom: 0 !important;
 	width: 100%;
 	height: 60px;
-	background-color: #1abc9c;
+	background-color: var(--accent-color);
 }
 
 .footer p {
-	margin-top: 25px;
+    position: relative;
+    top: 40%;
+    text-align: center;
 	font-size: 12px;
-  color: #fff;
+    color: #fff;
+}
+
+/**
+* Styles for compose page
+*/
+
+#compose-form input[name='postTitle'] {
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border: 2px solid #0000;
+    width: 10%;
+    font-size: x-large;
+}
+
+#compose-form input[name='postTitle']:focus {
+    outline: none;
+    width: 40%;
+    border-bottom: 2px solid var(--accent-color);
+    transition: 0.2s;
+}
+
+#compose-form textarea {
+    border: none;
+    background: #0000;
+    padding-left: 1rem;
+    height: 200px;
+    width: 500px;
+    border: 2px solid #0000;
+    margin-bottom: 2rem;
+}
+
+#compose-form textarea:focus {
+    outline: none;
+    border-left: 2px solid var(--accent-color);
+    transition: 0.2s;
+}
+
+#compose-form button.btn {
+    color: #fff;
+    background-color: var(--accent-color);
 }

@@ -1,0 +1,13 @@
+<%- include('header') -%>
+
+<div class="container-fluid">
+
+    <h1 class="heading"><%= title %></h1>
+    <% content.forEach(paragraph => { %>
+        <p class="content"><%= paragraph %></p>
+    <% }) %>
+    
+
+</div>
+
+<%- include('footer') -%>
