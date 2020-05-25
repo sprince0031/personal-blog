@@ -99,13 +99,15 @@ p, h1, h2 {
     background: #0000;
     border: 2px solid #0000;
     color: var(--primary-text-colour);
-    width: 10%;
+    width: 50%;
+    min-width: fit-content;
     font-size: x-large;
 }
 
 #compose-form input[name='postTitle']:focus {
     outline: none;
-    width: 40%;
+    width: 100%;
+    min-width: fit-content;
     border-bottom: 2px solid var(--accent-colour);
     transition: 0.2s;
 }
@@ -116,7 +118,7 @@ p, h1, h2 {
     color: var(--primary-text-colour);
     padding-left: 1rem;
     height: 200px;
-    width: 500px;
+    width: 100%;
     border: 2px solid #0000;
     margin-bottom: 2rem;
 }
