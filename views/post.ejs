@@ -1,6 +1,8 @@
-<%- include('header') -%>
+<%- include('head') -%>
+<!-- Add page specific head content here -->
+<%- include('navbar') -%>
 
-<div class="container-fluid">
+
 
     <h1 class="heading"><%= title %></h1>
     <% content.forEach(paragraph => { %>
@@ -8,6 +10,6 @@
     <% }) %>
     
 
-</div>
+
 
 <%- include('footer') -%>

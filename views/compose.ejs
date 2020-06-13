@@ -1,12 +1,14 @@
-<%- include('header') -%>
+<%- include('head') -%>
+<!-- Add page specific head content here -->
+<%- include('navbar') -%>
 
-<div class="container-fluid">
+
     <h1 class="heading">Compose</h1>
     <form id="compose-form" action="/compose" method="post">
         <input type="text" name="postTitle" placeholder="Title" autocomplete="off" required><br>
         <textarea name="content" placeholder="Type you content here..."></textarea><br>
         <button class="btn btn-lg" type="submit">Publish</button>
     </form>
-</div>
+
 
 <%- include('footer') -%>
