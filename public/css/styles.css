@@ -1,14 +1,154 @@
-body {
-    background-color: var(--background-colour);
-    height: 100vh;
+/*----------------------------------------------------------------------------- 
+Vouch Screen Stylesheet 
+version:   0.1 
+date:      13/06/2020 
+author:    Siddharth Prince 
+email:     siddharthprince31@gmail.com 
+website:   https://github.com/sprince0031/generic-blog
+version history: https://github.com/sprince0031/generic-blog/tree/development/public/css
+*/
+
+:root {
+	--background-colour: #fff;
+    --primary-text-colour: #111;
+	--accent-colour: #2e6cd1;
 }
 
-.container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
-    background-color: var(--background-colour);
+* { 
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
 }
+
+.clear { 
+    clear:both; 
+} 
+
+.right { 
+    float: right; 
+} 
+
+.left { 
+    float: left; 
+}
+
+body { 
+    /* font: 62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;  */
+    font: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-colour);
+} 
+
+/* #wrapper {  
+    width: 95%;  
+    text-align: left;   
+    margin-left: auto;  
+    margin-right: auto;  
+    background-color: var(--bg-color); 
+} */
+
+/*----------------------------------------------------------------------------- 
+Typography
+*/
+
+h1 { 
+    font-size: 3.2em; 
+} 
+     
+h2 { 
+    font-size: 3.0em;     
+} 
+     
+h3 { 
+    font-size: 2.8em; 
+} 
+     
+h4 { 
+    font-size: 2.6em;     
+} 
+     
+h5 { 
+    font-size: 2.4em;     
+} 
+     
+/* p { 
+    font-size: 1.2em;     
+} */
+
+/*----------------------------------------------------------------------------- 
+Navbar
+*/
+.navbar .container {
+    margin-top: 0;
+    padding: 0.7rem 0;
+}
+
 .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 3.5px;
+    color: var(--primary-text-colour);
+    background-color: var(--background-colour);
+
+}
+
+.navbar a.navbar-brand {
+    font-size: 1.2rem;
+    /* font-weight: bolder; */
+    color: var(--primary-text-colour);
+}
+
+.navbar-nav li a {
+    color: var(--primary-text-colour);
+    font-weight: 100 !important;
+}
+
+.navbar-nav li a:hover {
+    color: var(--accent-color);
+}
+
+.nav-nav li a.active {
+    color: var(--accent-color);
+    opacity: 75%;
+}
+
+#theme-toggle-btn {
+    color: var(--primary-text-colour);
+    margin-bottom: 0.5rem;
+    background-color: #0000;
+    border: none;
+    font-size: 20px;
+}
+
+.theme-toggle-fixed {
+    position: fixed;
+    top: 0.85rem;
+    right: 4rem;
+}
+
+nav button:focus, nav button:active {
+    outline: none;
+}
+
+#theme-toggle-btn:active {
+    outline: none;
+}
+
+.navbar-toggler {
+    position: fixed;
+    top: 1.1rem;
+    right: 1rem;
+}
+
+.navbar-toggler-icon svg{
+    fill: var(--primary-text-colour);
+}
+
+/* .navbar {
     padding-top: 15px;
     padding-bottom: 15px;
     border: 0;
@@ -33,64 +173,65 @@ body {
     color: var(--accent-colour) !important;
 }
 
-.navbar-nav li button {
-    display: inline;
-    color: var(--primary-text-colour);
-    background-color: #0000;
-    border: none;
-    bottom: 0;
-    font-size: 20px;
-}
-
 .navbar-nav li button:focus {
     outline: none;
 }
 
 p, h1, h2 {
     color: var(--primary-text-colour);
+} */
+
+/*----------------------------------------------------------------------------- 
+Container
+*/
+
+.container {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
 }
 
-.footer-padding {
-	padding-bottom: 60px;
+#content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--background-colour);
+    color: var(--primary-text-colour);
 }
 
-.footer {
-	position: relative;
+/*----------------------------------------------------------------------------- 
+Footer
+*/
+
+footer {
     text-align: center;
-    top: 23vh;
-	bottom: 0 !important;
-	width: 100%;
-	height: 60px;
-	background-color: var(--accent-colour);
-}
-
-.footer p {
-    position: relative;
-    top: 40%;
-    text-align: center;
-	font-size: 12px;
     color: #fff;
+    background-color: var(--accent-colour);
+    margin-top: auto;
+}
+
+footer p {
+    padding: 1rem 0;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
 }
 
 .footer svg {
     position: relative;
     top: 3px;
     font-size: medium;
-    fill: #fff;
 }
 
-#theme-toggle-btn svg {
-    position: relative;
+/* #theme-toggle-btn svg {
     top: 12px;
-}
+} */
 
 #btn-404 {
     background-color: var(--accent-colour);
     color: #fff;
 }
 
-/**
-* Styles for compose page
+/*----------------------------------------------------------------------------- 
+Compose page
 */
 
 #compose-form input[name='postTitle'] {
