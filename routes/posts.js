@@ -1,16 +1,23 @@
 const router = require('express').Router();
-const postsRouter = require('./root');
+const Post = require('../models/posts.model');
 
 router.route('/:postName').get((req, res) => {
-    let objToPass = postsRouter.posts.find(post => {
-        return post.title === req.params.postName;
-    });
+    const postTitle = req.params.postName;
+    Post.findOne({postTitle: postTitle})
+        .then(post => {
+            if (post) {
+                res.render('post', post);
+            } else {
+                res.render('404');
+            }
+        })
+        .catch(err => res.status(400).json(`Error: ${err}`));
       
-    if (objToPass) {
-        res.render('post', objToPass);
-    } else {
-        res.render('404');
-    }
+    // if (post) {
+    //     res.render('post', post);
+    // } else {
+    //     res.render('404');
+    // }
 });
 
 module.exports = router;
