@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 function themeSwitcher(darkTheme) {
     if (darkTheme) {
-        $(':root').css('--background-colour', '#111');
+        $(':root').css('--background-colour', '#000');
         $(':root').css('--primary-text-colour', '#fff');
         $(':root').css('--accent-colour', '#a80b0b');
         $('#theme-toggle-btn').html(`<svg class="bi bi-brightness-high-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +51,7 @@ function themeSwitcher(darkTheme) {
         
     } else {
         $(':root').css('--background-colour', '#fff');
-        $(':root').css('--primary-text-colour', '#111');
+        $(':root').css('--primary-text-colour', '#000');
         $(':root').css('--accent-colour', '#2e6cd1');
         $('#theme-toggle-btn').html(`<svg class="bi bi-moon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M14.53 10.53a7 7 0 0 1-9.058-9.058A7.003 7.003 0 0 0 8 15a7.002 7.002 0 0 0 6.53-4.47z"/>

@@ -1,15 +1,16 @@
 const router = require('express').Router();
+const Post = require('../models/posts.model');
 
-const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
+// const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
 const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
 const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
-const posts = [];
 
 router.route('/').get((req, res) => {
-    res.render('home', {
-        homeStartingContent: homeStartingContent,
-        posts: posts,
-      });
+    Post.find()
+        .then(posts => {
+            res.render('home', {posts: posts});
+        })
+        .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
 router.route('/about').get((req, res) => {
@@ -26,18 +27,17 @@ router.route('/compose').get((req, res) => {
 
 router.route('/compose').post((req, res) => {
     const title = req.body.postTitle;
-  const content = req.body.content.split("\r\n");
-  // console.log(title, content.split("\r\n"));
-  posts.push({
-    // id: ++postId,
-    title: title,
-    content: content
-  });
+    const content = req.body.content.split("\r\n");
+    const description = req.body.description;
+    const newPost = new Post({
+        postTitle: title,
+        postContent: content,
+        postDescription: description
+    });
 
-  res.redirect('/posts/' + posts[posts.length - 1].title);
+    newPost.save();
+
+    res.redirect('/posts/' + title);
 });
 
-module.exports = {
-    router: router,
-    posts: posts
-};
+module.exports = router;

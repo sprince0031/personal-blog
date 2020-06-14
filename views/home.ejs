@@ -1,16 +1,33 @@
 <%- include('head') -%>
 <!-- Add page specific head content here -->
+<title>Siddharth Prince | Home</title>
+<meta name="description" content="Personal blog of Siddharth Prince (sprince0031)">
 <%- include('navbar') -%>
 
   
-    <h1 class="heading">Sprince0031's Personal Blog</h1>
-    <p class="home-content"><%= homeStartingContent %></p>
+    <h1 class="heading">My Personal Blog</h1>
+    <div class="home-content">
+        <p>Hey there! Here are a few of my thoughts and opinions on stuff. Hope you have a pleasant experience here!</p>
+    </div>
 
     <% posts.forEach(post => { %>
-        <h2 class="post-title"><%= post.title %></h2>
+        
+        <h2 class="post-title">
+            <a href="/posts/<%= post.postTitle %>"><%= post.postTitle %></a>
+        </h2>
         <p class="post-desc">
-            <%= post.content[0].substring(0, 200) %>...
-            <a href="/posts/<%= post.title %>">Read more</a>
+            <% if (post.postDescription != null) { %>
+                <%- post.postDescription %> 
+                <a href="/posts/<%= post.postTitle %>" style="text-decoration: underline;">Read more</a>
+            <% } else { %> 
+                <% for (let i = 0; i < post.postContent.length; i++) { %> 
+                    <% if (!(/<h[1-6]>/.test(post.postContent[i]) || post.postContent[i] === '')) { %> 
+                        <%- post.postContent[i].substring(0, 200) %>...
+                        <a href="/posts/<%= post.postTitle %>" style="text-decoration: underline;">Read more</a>
+                        <% break; %> 
+                    <% } %> 
+                <% } %>
+            <% } %> 
         </p>
     <% }); %>
 

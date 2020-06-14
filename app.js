@@ -25,7 +25,7 @@ dbConnection.once('open', () => {
 const rootRouter = require('./routes/root');
 const postsRouter = require('./routes/posts');
 
-app.use('', rootRouter.router);
+app.use('', rootRouter);
 app.use('/posts', postsRouter);
 
 app.use(function(req, res, next){

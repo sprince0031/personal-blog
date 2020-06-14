@@ -1,15 +1,16 @@
 <%- include('head') -%>
 <!-- Add page specific head content here -->
+<title><%= postTitle %></title>
+<meta name="description" content="<%- postDescription %>">
 <%- include('navbar') -%>
 
-
-
-    <h1 class="heading"><%= title %></h1>
-    <% content.forEach(paragraph => { %>
-        <p class="content"><%= paragraph %></p>
-    <% }) %>
+    <h1 class="post-title"><%= postTitle %></h1>
+    <h6 class="post-date">Posted on <%= createdAt %></h6>
+    <div class="post-content">
+        <% postContent.forEach(paragraph => { %> 
+            <p class="post-paragraph"><%- paragraph %></p>
+        <% }) %> 
+    </div>
     
-
-
-
+    
 <%- include('footer') -%>

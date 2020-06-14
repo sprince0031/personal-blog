@@ -10,7 +10,7 @@ version history: https://github.com/sprince0031/generic-blog/tree/development/pu
 
 :root {
 	--background-colour: #fff;
-    --primary-text-colour: #111;
+    --primary-text-colour: #000;
 	--accent-colour: #2e6cd1;
 }
 
@@ -37,7 +37,17 @@ body {
     font: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: var(--text-color);
     background-color: var(--background-colour);
-} 
+}
+
+::selection {
+    color: #fff;
+    background-color: var(--accent-colour);
+}
+
+::-moz-selection {
+    color: #fff;
+    background-color: var(--accent-colour);
+}
 
 /*----------------------------------------------------------------------------- 
 Typography
@@ -63,9 +73,14 @@ h5 {
     font-size: 2.4em;     
 } 
      
-/* p { 
-    font-size: 1.2em;     
-} */
+p { 
+    font-size: 1.1em;     
+}
+
+a {
+    color: var(--primary-text-colour) !important;
+    text-decoration: none;
+}
 
 /*----------------------------------------------------------------------------- 
 Navbar
@@ -89,13 +104,13 @@ Navbar
 }
 
 .navbar a.navbar-brand {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--primary-text-colour);
 }
 
 .nav-link {
     color: var(--primary-text-colour);
-    font-weight: 300 !important;
+    font-weight: 400 !important;
 }
 
 .nav-link:hover {
@@ -168,6 +183,14 @@ Container
 }
 
 /*----------------------------------------------------------------------------- 
+Post page
+*/
+
+.post-content {
+    margin-top: 2rem;
+}
+
+/*----------------------------------------------------------------------------- 
 Footer
 */
 
@@ -179,7 +202,7 @@ footer {
 }
 
 footer p {
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     font-size: 0.8rem;
     margin-bottom: 2px;
 }
@@ -224,13 +247,17 @@ Compose page
 
 #compose-form textarea {
     border: none;
-    background: #0000;
+    background: transparent;
     color: var(--primary-text-colour);
     padding-left: 1rem;
     height: 200px;
     width: 100%;
     border: 2px solid #0000;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+#compose-form textarea[name="description"] {
+    height: 75px;
 }
 
 #compose-form textarea:focus {
@@ -242,4 +269,59 @@ Compose page
 #compose-form button.btn {
     color: #fff;
     background-color: var(--accent-colour);
+}
+
+/*----------------------------------------------------------------------------- 
+Contact page
+*/
+
+.contact-card {
+    /* box-shadow: 1 5 5 2 var(--primary-text-colour); */
+    margin: 0.4rem 0;
+    text-align: right;
+    border-radius: 10px !important;
+}
+
+.contact-card a h4 {
+    padding-top: 25px;
+    padding-left: 20px;
+    color: #fff;
+}
+
+.contact-card a:hover {
+    text-decoration: none;
+}
+
+.contact-card img {
+    height: 75px;
+    width: 75px;
+}
+
+#github {
+    background-color: #333;
+}
+
+#linkedin {
+    background-color: #0077b5;
+}
+
+#twitter {
+    background-color: #1da1f2 ;
+}
+
+#reddit {
+    background-color: #ff4500;
+}
+
+#instagram {
+    background-color: #e1306c;
+}
+
+#gmail {
+    background-color: #eee;
+}
+
+#gmail h4 {
+    color: #000;
+    padding-left: 0;
 }
