@@ -1,5 +1,5 @@
-# generic-blog
-This repo is for the EJS Challenge as part of the Web development course by The App Brewery.
+# Personal Blog
+This repository contains the code for my personal blog I built using Node.js, Express.js and MongoDB.
 
-The demo can be viewed at the link below.  
+The blog is live at:  
 https://sprince0031-personal-blog.herokuapp.com/
