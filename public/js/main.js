@@ -1,21 +1,42 @@
-let darkTheme = false;
+let darkTheme;
 
-$(function() {
-    var href = window.location.href;
-    $('.navbar .nav-item a').each(function(e,i) {
-        if (href.indexOf($(this).attr('href')) >= 0) {
-            console.log($(this).attr('href'), href);
-            $(this).addClass('active');
+/*----------------------------------------------------------------------------- 
+Dark theme switching functionality
+*/
+
+function setCookie(cookieName, cookieValue, exdays) {
+    var expiryDate = new Date();
+    expiryDate.setTime(expiryDate.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ expiryDate.toUTCString();
+    document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+}
+
+function getCookie(cookieName) {
+    var name = cookieName + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookieList = decodedCookie.split(';');
+    for(var i = 0; i <cookieList.length; i++) {
+        var c = cookieList[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
-    });
-});
-
-$(function() {
-    if($(window).width() <= 767 ) {
-        $('#theme-toggle-btn').addClass('theme-toggle-fixed');
-    } else {
-        $('#theme-toggle-btn').removeClass('theme-toggle-fixed');
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
     }
+    return "";
+  }
+
+$(document).ready(function () {
+    var darkThemeCookie = getCookie("darkTheme");
+    if (darkThemeCookie != "") {
+        darkTheme = (darkThemeCookie === 'true')
+        // console.log(`darkTheme cookie: ${darkThemeCookie}`); // for debug purpose
+    } else {
+        darkTheme = false;
+        setCookie("darkTheme", darkTheme, 365);
+    }
+    themeSwitcher(darkTheme);
 });
 
 function themeSwitcher(darkTheme) {
@@ -41,15 +62,33 @@ function themeSwitcher(darkTheme) {
 
 $("#theme-toggle-btn").on('click', () => {
     darkTheme = (darkTheme) ? false : true;
-    // console.log(darkTheme)
-    $.post('/themetoggle',
-    {
-        darkTheme: darkTheme,
-    }, 
-    (data, status) => {
-        // console.log(data, status);
-        darkTheme = data == 'true';
-        themeSwitcher(darkTheme);
-        console.log(`Theme is now ${(darkTheme) ? "dark" : "light"}.`);
+    setCookie("darkTheme", darkTheme, 365);
+    themeSwitcher(darkTheme);
+    console.log(`Theme is now ${(darkTheme) ? "dark" : "light"}.`);
+});
+
+/*----------------------------------------------------------------------------- 
+Active nav item toggler
+*/
+
+$(function() {
+    let href = window.location.href;
+    $('.navbar .nav-item a').each(function(e,i) {
+        let navHref = $(this).attr('href');
+        if (navHref === href.substring(href.length - navHref.length)) {
+            $(this).addClass('active');
+        }
     });
+});
+
+/*----------------------------------------------------------------------------- 
+Set theme switcher button to absolute position when navbar collapses
+*/
+
+$(function() {
+    if($(window).width() <= 767 ) {
+        $('#theme-toggle-btn').addClass('theme-toggle-fixed');
+    } else {
+        $('#theme-toggle-btn').removeClass('theme-toggle-fixed');
+    }
 });
