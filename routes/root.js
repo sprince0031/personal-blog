@@ -35,9 +35,17 @@ router.route('/compose').post((req, res) => {
         postDescription: description
     });
 
-    newPost.save();
+    newPost.save((err, document) => {
+        if (err) {
+            console.log(err);
+            res.send(err.message);
+        } else {
+            if (document) {
+                res.redirect('/posts/' + title);
+            }
+        }
+    });
 
-    res.redirect('/posts/' + title);
 });
 
 module.exports = router;
