@@ -1,16 +1,27 @@
-<%- include('head') -%>
-<!-- Add page specific head content here -->
-    <title><%= postTitle %> | Siddharth Prince</title>
+<%- include('partials/head') -%>
+    <!-- Add page specific head content here -->
+    <% let title = postEndpoint.replace(/-+/g, ' '); %>
+    <% title = title.replace(/(^\w|\s\w)/g, m => m.toUpperCase()) %> 
+    <title><%= title %> | Siddharth Prince</title>
     <meta name="description" content="<%- postDescription %>">
-<%- include('navbar') -%>
+
+<%- include('partials/navbar') -%>
 
     <h1 class="post-title"><%= postTitle %></h1>
     <h6 class="post-date">Posted on <%= createdAt %></h6>
     <div class="post-content">
-        <% postContent.forEach(paragraph => { %> 
-            <p class="post-paragraph"><%- paragraph %></p>
+        <% postContent.forEach(paragraph => { %>
+            <% if (! (paragraph.includes('</') || (paragraph.includes('<') && paragraph.includes('>')))) { %> 
+                <p class="post-paragraph">
+                    <%- paragraph %>
+                </p>
+            <% } else { %>
+                <%- paragraph %>
+            <% } %> 
         <% }) %> 
     </div>
     
     
-<%- include('footer') -%>
+<%- include('partials/footer') -%>
+    <!-- Add page specific scripts here -->
+<%- include('partials/foot') -%>

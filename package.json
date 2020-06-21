@@ -1,12 +1,13 @@
 {
-  "name": "ejs-challenge",
+  "name": "personal-blog",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "siddharthprince31@gmail.com",
+  "repository": "https://github.com/sprince0031/personal-blog",
   "license": "ISC",
   "engines": {
     "node": "12.16.3"
@@ -17,7 +18,11 @@
     "dotenv": "^8.2.0",
     "ejs": "^2.7.4",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "lodash": "^4.17.13",
-    "mongoose": "^5.9.18"
+    "mongoose": "^5.9.18",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1"
   }
 }

@@ -1,19 +1,29 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const ejs = require("ejs");
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const ejs = require('ejs');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
-require('dotenv').config();
+const session = require('express-session');
+const passport = require('passport');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
-
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
 app.use(cors());
+
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
@@ -24,9 +34,11 @@ dbConnection.once('open', () => {
 
 const rootRouter = require('./routes/root');
 const postsRouter = require('./routes/posts');
+const adminRouter = require('./routes/admin');
 
 app.use('', rootRouter);
 app.use('/posts', postsRouter);
+app.use('/admin', adminRouter)
 
 app.use(function(req, res, next){
   res.status(404);

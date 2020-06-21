@@ -1,10 +1,11 @@
-<%- include('head') -%>
-<!-- Add page specific head content here -->
-<%- include('navbar') -%>
+<%- include('partials/head') -%>
+    <!-- Add page specific head content here -->
+
+<%- include('partials/navbar') -%>
 
 
     <h1 class="heading">Compose</h1>
-    <form id="compose-form" action="/compose" method="post">
+    <form id="compose-form" action="/admin/compose" method="post">
         <input type="text" name="postTitle" placeholder="Title" autocomplete="off" required><br>
         <textarea name="content" placeholder="Type your content here..."></textarea><br>
         <textarea name="description" placeholder="Provide a brief description for your post."></textarea><br>
@@ -12,4 +13,6 @@
     </form>
 
 
-<%- include('footer') -%>
+<%- include('partials/footer') -%>
+    <!-- Add page specific scripts here -->
+<%- include('partials/foot') -%>
