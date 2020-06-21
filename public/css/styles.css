@@ -54,27 +54,31 @@ Typography
 */
 
 h1 { 
-    font-size: 3.2em; 
+    font-size: 3em; 
 } 
      
 h2 { 
-    font-size: 3.0em;     
+    font-size: 2.8em;     
 } 
      
 h3 { 
-    font-size: 2.8em; 
+    font-size: 2.6em; 
 } 
      
 h4 { 
-    font-size: 2.6em;     
-} 
-     
-h5 { 
     font-size: 2.4em;     
 } 
      
+h5 { 
+    font-size: 2.2em;     
+} 
+
+h6 {
+    font-size: 2em;
+}
+     
 p { 
-    font-size: 1.1em;     
+    font-size: 1.2em;     
 }
 
 a {
@@ -124,11 +128,14 @@ Navbar
 @media only screen and (max-width: 767px) {
     .active {
         border-bottom: none;
-        border-left: 1px solid var(--accent-colour);
+        border-left: 1.5px solid var(--accent-colour);
     }
 
     .nav-link {
+        font-weight: 700 !important;
         padding-left: 0.5rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
     }
 
 }
@@ -190,27 +197,8 @@ Post page
     margin-top: 2rem;
 }
 
-/*----------------------------------------------------------------------------- 
-Footer
-*/
-
-footer {
-    text-align: center;
-    color: #fff;
-    background-color: var(--accent-colour);
-    margin-top: auto;
-}
-
-footer p {
-    padding: 0.8rem 0;
-    font-size: 0.8rem;
-    margin-bottom: 2px;
-}
-
-.footer svg {
-    position: relative;
-    top: 3px;
-    font-size: medium;
+.post-content ul {
+    margin-left: 10px;
 }
 
 /*----------------------------------------------------------------------------- 
@@ -324,4 +312,58 @@ Contact page
 #gmail h4 {
     color: #000;
     padding-left: 0;
+}
+
+/*----------------------------------------------------------------------------- 
+Login page
+*/
+#login-div {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+#login-form input {
+    text-align: center;
+    background-color: var(--background-colour);
+    color: var(--primary-text-colour);
+    margin: 1rem 0;
+    width: 15%;
+    border-bottom: 2px solid transparent;
+}
+
+#login-form input:focus {
+    outline: none;
+    width: 25%;
+    border-bottom: 2px solid var(--accent-colour);
+    transition: 0.3s;
+}
+
+#login-form button {
+    background-color: var(--accent-colour);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/*----------------------------------------------------------------------------- 
+Footer
+*/
+
+footer {
+    text-align: center;
+    color: #fff;
+    background-color: var(--accent-colour);
+    margin-top: auto;
+}
+
+footer p {
+    padding: 0.8rem 0;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+}
+
+.footer svg {
+    position: relative;
+    top: 3px;
+    font-size: medium;
 }

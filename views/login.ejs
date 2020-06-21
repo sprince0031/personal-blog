@@ -1,0 +1,21 @@
+<%- include('partials/head') -%>
+
+    <!-- Add page specific head content here -->
+    <meta name="robots" content="noindex">
+    <title>Admin Login | Siddharth Prince</title>
+
+<%- include('partials/navbar') -%>
+
+    <div id="login-div">
+        <h2>Admin Login</h2>
+        <form id="login-form" action="/admin/login" method="post">
+            <input type="text" name="username" placeholder="username" autocomplete="off"><br>
+            <input type="password" name="password" placeholder="password"><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+<%- include('partials/footer') -%>
+    <!-- Add page specific scripts here -->
+    <script src="/js/login.js"></script>
+<%- include('partials/foot') -%>

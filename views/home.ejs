@@ -1,8 +1,9 @@
-<%- include('head') -%>
-<!-- Add page specific head content here -->
-<title>Siddharth Prince | Home</title>
-<meta name="description" content="Personal blog of Siddharth Prince (sprince0031)">
-<%- include('navbar') -%>
+<%- include('partials/head') -%>
+    <!-- Add page specific head content here -->
+    <title>Siddharth Prince | Home</title>
+    <meta name="description" content="Personal blog of Siddharth Prince (sprince0031)">
+
+<%- include('partials/navbar') -%>
 
   
     <h1 class="heading">My Personal Blog</h1>
@@ -13,12 +14,12 @@
     <% posts.forEach(post => { %>
         
         <h2 class="post-title">
-            <a href="/posts/<%= post.postTitle %>"><%= post.postTitle %></a>
+            <a href="/posts/<%= post.postEndpoint %>"><%= post.postTitle %></a>
         </h2>
         <p class="post-desc">
             <% if (post.postDescription != null) { %>
                 <%- post.postDescription %> 
-                <a href="/posts/<%= post.postTitle %>" style="text-decoration: underline;">Read more</a>
+                <a href="/posts/<%= post.postEndpoint %>" style="text-decoration: underline;">Read more</a>
             <% } else { %> 
                 <% for (let i = 0; i < post.postContent.length; i++) { %> 
                     <% if (!(/<h[1-6]>/.test(post.postContent[i]) || post.postContent[i] === '')) { %> 
@@ -31,6 +32,6 @@
         </p>
     <% }); %>
 
-  
-
-<%- include('footer') -%>
+<%- include('partials/footer') -%>
+    <!-- Add page specific scripts here -->
+<%- include('partials/foot') -%>
