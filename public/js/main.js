@@ -1,5 +1,25 @@
 let darkTheme;
 
+$(() => {
+    $.get('/admin/checkauth').done(data => {
+        const authState = data.isAuthenticated;
+        exposeAdminControls(authState);
+    });
+})
+
+function exposeAdminControls(authState) {
+    const href = window.location.pathname;
+    
+    if (authState) {
+        console.log("exposeControls: " + authState);
+        $('#compose-btn').show();
+        // Add code to expose delete and edit post icons in home and individual post page
+    } else {
+        console.log("exposeControls: " + authState);
+        $('#compose-btn').hide();
+    }
+}
+
 /*----------------------------------------------------------------------------- 
 Dark theme switching functionality
 */
@@ -65,7 +85,7 @@ $("#theme-toggle-btn").on('click', () => {
     darkTheme = (darkTheme) ? false : true;
     setCookie("darkTheme", darkTheme, 365);
     themeSwitcher(darkTheme);
-    console.log(`Theme is now ${(darkTheme) ? "dark" : "light"}.`);
+    // console.log(`Theme is now ${(darkTheme) ? "dark" : "light"}.`);
 });
 
 /*----------------------------------------------------------------------------- 
@@ -73,9 +93,9 @@ Active nav item toggler
 */
 
 $(function() {
-    let href = window.location.href;
+    const href = window.location.href;
     $('.navbar .nav-item a').each(function(e,i) {
-        let navHref = $(this).attr('href');
+        const navHref = $(this).attr('href');
         if (navHref === href.substring(href.length - navHref.length)) {
             $(this).addClass('active');
         }
@@ -89,7 +109,9 @@ Set theme switcher button to absolute position when navbar collapses
 $(function() {
     if($(window).width() <= 767 ) {
         $('#theme-toggle-btn').addClass('theme-toggle-fixed');
+        $('#compose-btn').addClass('compose-button-fixed');
     } else {
         $('#theme-toggle-btn').removeClass('theme-toggle-fixed');
+        $('#compose-btn').removeClass('compose-button-fixed');
     }
 });
