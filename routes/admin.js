@@ -40,7 +40,6 @@ router.route('/logout').get((req, res) => {
 })
 
 router.route('/register').post((req, res) => {
-    console.log(req.body.username, req.body.password);
     User.register({username: req.body.username}, req.body.password, (err, user) => {
         if (err) {
             res.status(400).json({error: err});
@@ -52,12 +51,22 @@ router.route('/register').post((req, res) => {
     });    
 });
 
+router.route('/checkauth').get((req, res) => {
+    if(req.isAuthenticated()) {
+        res.json({isAuthenticated: true});
+    } else {
+        res.json({isAuthenticated: false});
+    }
+});
+
 const secretKey = process.env.SECRETKEY;
-router.route('/alohomora').post((req, res) => {
-    if (req.body.magicWord === 'alohomora') {
+const magicWord = process.env.MAGICWORD;
+const magicCurse = process.env.MAGICCURSE;
+router.route('/imperio').post((req, res) => {
+    if (req.body.magicWord === magicWord) {
         res.json({secretKey: secretKey});
     } else {
-        res.json({error: 'Avada Kedavra!'})
+        res.json({error: magicCurse})
     }
 });
 
