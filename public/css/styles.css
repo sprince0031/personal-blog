@@ -32,6 +32,14 @@ version history: https://github.com/sprince0031/generic-blog/tree/development/pu
     float: left; 
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
 body { 
     /* font: 62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;  */
     font: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -78,7 +86,7 @@ h6 {
 }
      
 p { 
-    font-size: 1.2em;     
+    font-size: 1em;     
 }
 
 a {
@@ -141,7 +149,6 @@ Navbar
 }
 
 #theme-toggle-btn {
-    color: var(--primary-text-colour);
     margin-bottom: 0.25rem;
     background-color: #0000;
     border: none;
@@ -150,23 +157,35 @@ Navbar
 
 #theme-toggle-btn .bi {
     font-size: 1.25em;
-}
-
-nav .bi-plus-circle {
-    font-size: 1.75em;
     color: var(--primary-text-colour);
 }
 
-.theme-toggle-fixed {
-    position: fixed;
-    top: 0.85rem;
-    right: 3.25rem;
+#compose-btn svg, #logout-btn svg {
+    font-size: 1.5em;
+    margin-bottom: 0.05rem;
+    color: var(--primary-text-colour);
+}
+
+#compose-btn:hover svg, #logout-btn:hover svg {
+    color: var(--accent-colour) !important;
 }
 
 .compose-button-fixed {
     position: fixed;
     top: 1rem;
-    right: 6rem;
+    right: 7.25rem;
+}
+
+.theme-toggle-fixed {
+    position: fixed;
+    top: 0.85rem;
+    right: 5rem;
+}
+
+.logout-button-fixed {
+    position: fixed;
+    top: 1rem;
+    right: 3rem;
 }
 
 nav button:focus, nav button:active {
@@ -216,6 +235,29 @@ Post page
     margin-left: 10px;
 }
 
+ul#post-icon-list {
+    float: right;
+}
+
+#post-icon-list li {
+    list-style: none;
+    padding: 0.8rem;
+    display: inline-flex;
+    position: relative;
+}
+
+#post-icon-list li svg {
+    color: var(--primary-text-colour);
+    font-size: 1.75rem;
+}
+
+.edit-btn:hover svg {
+    color: rgb(0, 180, 0) !important;
+}
+
+.delete-btn:hover svg {
+    color: rgb(218, 0, 0) !important;
+}
 /*----------------------------------------------------------------------------- 
 404 page
 */
