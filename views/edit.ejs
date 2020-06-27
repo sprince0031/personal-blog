@@ -1,0 +1,32 @@
+<%- include('partials/head') -%>
+    <!-- Add page specific head content here -->
+    <meta name="robots" content="noindex">
+    <% const lineBreak = '\r\n'; %> 
+    <% let title = postEndpoint.replace(/-+/g, ' '); -%>
+    <% title = title.replace(/(^\w|\s\w)/g, m => m.toUpperCase()) -%>
+    <title>Edit - <%= title %> | Siddharth Prince</title>
+<%- include('partials/navbar') -%>
+
+    <h1 class="heading">Edit Post</h1>
+    <form id="compose-form" action="/posts/<%= postEndpoint -%>/edit" method="post">
+        <input type="text" name="postTitle" value="<%= postTitle -%>" readonly><br>
+        <h5>Post Content</h5><br>
+        <textarea name="content" wrap="hard">
+            <%_ postContent.forEach(paragraph => { _%>
+                <%_ if (paragraph != "") { _%> 
+                    <%= paragraph -%>
+                <%_ } else {_%>
+                    <%- lineBreak -%> 
+                <%_ } _%> 
+            <%_ }); _%>
+        </textarea><br>
+        <h5>Post Description</h5><br>
+        <textarea name="description">
+            <%= postDescription _%>
+        </textarea><br>
+        <button class="btn btn-lg" type="submit">Publish</button>
+    </form>
+
+<%- include('partials/footer') -%>
+    <!-- Add page specific scripts here -->
+<%- include('partials/foot') -%>

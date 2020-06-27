@@ -9,14 +9,39 @@ $(() => {
 
 function exposeAdminControls(authState) {
     const href = window.location.pathname;
+    console.log(href);
     
     if (authState) {
         console.log("exposeControls: " + authState);
+        $('#compose-btn').removeClass('hidden');
+        $('#compose-btn').addClass('visible');
+        $('#logout-btn').removeClass('hidden');
+        $('#logout-btn').addClass('visible');
         $('#compose-btn').show();
+        $('#logout-btn').show();
         // Add code to expose delete and edit post icons in home and individual post page
+        if (href.includes('/posts/')) {
+            $('#post-title-div').removeClass('col-md-12');
+            $('#post-title-div').addClass('col-md-10');
+            $('#post-icon-div').removeClass('hidden');
+            $('#post-icon-div').addClass('visible');
+            $('#post-icon-div').show();
+        }
     } else {
         console.log("exposeControls: " + authState);
+        $('#compose-btn').removeClass('visible');
+        $('#compose-btn').addClass('hidden');
+        $('#logout-btn').removeClass('visible');
+        $('#logout-btn').addClass('hidden');
         $('#compose-btn').hide();
+        $('#logout-btn').hide();
+        if (href.includes('/posts/')) {
+            $('#post-title-div').removeClass('col-md-10');
+            $('#post-title-div').addClass('col-md-12');
+            $('#post-icon-div').removeClass('visible');
+            $('#post-icon-div').addClass('hidden');
+            $('#post-icon-div').hide();
+        }
     }
 }
 
@@ -110,8 +135,10 @@ $(function() {
     if($(window).width() <= 767 ) {
         $('#theme-toggle-btn').addClass('theme-toggle-fixed');
         $('#compose-btn').addClass('compose-button-fixed');
+        $('#logout-btn').addClass('logout-button-fixed');
     } else {
         $('#theme-toggle-btn').removeClass('theme-toggle-fixed');
         $('#compose-btn').removeClass('compose-button-fixed');
+        $('#logout-btn').removeClass('logout-button-fixed');
     }
 });
